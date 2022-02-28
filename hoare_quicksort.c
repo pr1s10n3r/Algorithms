@@ -3,9 +3,9 @@
  * https://en.wikipedia.org/wiki/Quicksort
  */
 
-#include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #define TEST_ARRAY_SIZE 10
 
@@ -29,38 +29,38 @@ int main(void) {
 
 int partition(int *array, size_t lo, size_t hi)
 {
-    const int idx = (int) floor(((double)hi + (double)lo) / 2);
-    // pivot
-    int pvt = array[idx];
+  const int idx = (int)floor(((double)hi + (double)lo) / 2);
+  // pivot
+  int pvt = array[idx];
 
-    // left index
-    int lfidx = lo - 1;
-    // right index
-    int rgidx = hi + 1;
+  // left index
+  int lfidx = lo - 1;
+  // right index
+  int rgidx = hi + 1;
 
-    while (true)
-    {
-        do {
-            lfidx += 1;
-        } while(array[lfidx] < pvt);
+  while (true) {
+    do {
+      lfidx += 1;
+    } while (array[lfidx] < pvt);
 
-        do {
-            rgidx -= 1;
-        } while (array[rgidx] > pvt);
+    do {
+      rgidx -= 1;
+    } while (array[rgidx] > pvt);
 
-        if (lfidx >= rgidx) {
-            return rgidx;
-        }
-
-        int tmp = array[lfidx];
-        array[lfidx] = array[rgidx];
-        array[rgidx] = tmp;
+    if (lfidx >= rgidx) {
+      return rgidx;
     }
 
-    return -1;
+    int tmp = array[lfidx];
+    array[lfidx] = array[rgidx];
+    array[rgidx] = tmp;
+  }
+
+  return -1;
 }
 
-void quicksort(int *array, size_t lo, size_t hi) {
+void quicksort(int *array, size_t lo, size_t hi)
+{
   if (lo >= 0 && hi >= 0 && lo < hi) {
     int ptn = partition(array, lo, hi);
     quicksort(array, lo, ptn);
@@ -68,7 +68,8 @@ void quicksort(int *array, size_t lo, size_t hi) {
   }
 }
 
-void print_array(int *array, size_t size) {
+void print_array(int *array, size_t size)
+{
   for (int i = 0; i < size; i++) {
     printf("%d", array[i]);
     if (i < size - 1) {
